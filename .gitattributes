@@ -1,0 +1,4 @@
+Assets/Materials filter=lfs diff=lfs merge=lfs -text
+Assets/Resources filter=lfs diff=lfs merge=lfs -text
+Assets/Prefabs filter=lfs diff=lfs merge=lfs -text
+Assets/Scenes filter=lfs diff=lfs merge=lfs -text
