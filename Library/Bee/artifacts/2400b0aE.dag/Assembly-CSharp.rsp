@@ -418,6 +418,7 @@
 "Assets/Scripts/Utlis/Score.cs"
 "Assets/Scripts/World/GameManager.cs"
 "Assets/Scripts/World/GameUI.cs"
+"Assets/Scripts/World/MainMenu.cs"
 "Assets/Scripts/World/SkyboxSelector.cs"
 -langversion:9.0
 /deterministic

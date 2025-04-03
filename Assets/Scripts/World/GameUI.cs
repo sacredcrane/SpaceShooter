@@ -16,7 +16,7 @@ public class GameUI : MonoBehaviour
         score.OnScoreUpdated.AddListener(UpdateScore);     
     }
 
-    private void Osable()
+    private void OnDisable()
     {
         playerHealth.OnHealthChanged.RemoveListener(UpdateHealth);  
         score.OnScoreUpdated.RemoveListener(UpdateScore);    
