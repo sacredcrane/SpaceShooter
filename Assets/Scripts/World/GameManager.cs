@@ -13,18 +13,33 @@ public class GameManager : MonoBehaviour
     public UnityEvent<int> OnLevelChanged;
     public UnityEvent OnShopOpened;
     public UnityEvent OnGameRestarted;
+    public UnityEvent<int> OnScoreUpdated;
+
+    public int CurrentScore;
+
+    
 
     private int _currentLevel = 1;
     private bool _isGamePaused;
+    private bool _isDead;
+
+    public void AddScore(int score = 10)
+    {
+        CurrentScore += score;
+        OnScoreUpdated?.Invoke(CurrentScore);
+
+    }
 
     private void Awake()
     {
         if(Instance == null) Instance = this;
         else Destroy(gameObject);
+        FindAnyObjectByType<PlayerHealth>().OnDeath.AddListener(LevelCompleted);
     }
 
-    public void LevelCompleted()
+    public void LevelCompleted(bool death)
     {
+        _isDead = death;
         Time.timeScale = 0;
         _isGamePaused = true;
         OnShopOpened?.Invoke();
@@ -32,7 +47,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartLevel()
     {
-        _currentLevel++;
+        if (!_isDead) _currentLevel++;
         Time.timeScale = 1;
         _isGamePaused = false;
         OnLevelChanged?.Invoke(_currentLevel);

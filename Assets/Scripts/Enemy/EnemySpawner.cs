@@ -52,8 +52,7 @@ public class EnemySpawner : MonoBehaviour
             
             yield return new WaitForSeconds(spawnInterval);
         }
-
-        GameManager.Instance.LevelCompleted();
+        GameManager.Instance.LevelCompleted(false);
     }
 
     private void SpawnSingleEnemy()

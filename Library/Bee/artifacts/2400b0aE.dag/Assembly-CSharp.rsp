@@ -406,7 +406,6 @@
 "Assets/Resources/VolumetricLines/Scripts/VolumetricLineBehavior.cs"
 "Assets/Resources/VolumetricLines/Scripts/VolumetricLineStripBehavior.cs"
 "Assets/Resources/VolumetricLines/Scripts/VolumetricLineVertexData.cs"
-"Assets/Scripts/Enemy/Enemy.cs"
 "Assets/Scripts/Enemy/EnemyCollision.cs"
 "Assets/Scripts/Enemy/EnemyMovement.cs"
 "Assets/Scripts/Enemy/EnemySpawner.cs"
@@ -415,11 +414,11 @@
 "Assets/Scripts/Player/PlayerWeapon.cs"
 "Assets/Scripts/Player/Shield.cs"
 "Assets/Scripts/Utlis/Projectile.cs"
-"Assets/Scripts/Utlis/Score.cs"
 "Assets/Scripts/World/GameManager.cs"
 "Assets/Scripts/World/GameUI.cs"
 "Assets/Scripts/World/MainMenu.cs"
 "Assets/Scripts/World/SkyboxSelector.cs"
+"Assets/Shop.cs"
 -langversion:9.0
 /deterministic
 /optimize+

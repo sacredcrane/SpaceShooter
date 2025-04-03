@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 
 public class PlayerWeapon : MonoBehaviour
@@ -17,9 +18,12 @@ public class PlayerWeapon : MonoBehaviour
     private int currentUpgradeLevel;
     private PlayerInput playerInput;
     private InputAction shootAction;
+    private AudioSource audioSource;
 
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null) Debug.Log("AudioSource not setted up");
         playerInput = GetComponent<PlayerInput>();
         shootAction = playerInput.actions["Attack"];
         currentUpgradeLevel = 0;
@@ -40,6 +44,7 @@ public class PlayerWeapon : MonoBehaviour
         {
             currentUpgradeLevel++;
             UpdateFirePattern();
+            Debug.Log(currentUpgradeLevel);
         }
     }
 
@@ -58,9 +63,11 @@ public class PlayerWeapon : MonoBehaviour
 
     private void Shoot()
     {
+        audioSource.Play();
         foreach (float angle in spreadAnglesPerLevel)
         {
-            Quaternion rotation = firePoint.rotation * Quaternion.Euler(0, 0, angle);
+            Debug.Log(angle);                                                    
+            Quaternion rotation = firePoint.rotation * Quaternion.Euler(angle, 0, 0);
             GameObject projectile = Instantiate(projectilePrefab, firePoint.position, rotation);
             
             if (projectile.TryGetComponent<Rigidbody>(out var rb))

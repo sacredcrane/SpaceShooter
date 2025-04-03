@@ -11,11 +11,19 @@ public class PlayerHealth : MonoBehaviour
     [Header("Events")]
     public UnityEvent<int> OnHealthChanged;
     public UnityEvent<bool> OnShieldStateChanged;
+    public UnityEvent<bool> OnDeath;
 
     private int currentHealth;
     private bool isShieldActive;
+    
 
     private void Start()
+    {
+        OnLevelRestart();
+        GameManager.Instance.OnGameRestarted.AddListener(OnLevelRestart);
+    }
+
+    private void OnLevelRestart() 
     {
         currentHealth = maxHealth;
         OnHealthChanged?.Invoke(currentHealth);
@@ -51,6 +59,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void HandleDeath()
     {
+        OnDeath?.Invoke(true);
         Debug.Log("Game Over!");
         Time.timeScale = 0;
     }

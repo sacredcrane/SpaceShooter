@@ -7,19 +7,26 @@ public class GameUI : MonoBehaviour
     [Header("References")]
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text healthText;
+    [SerializeField] private TMP_Text levelText;
     [SerializeField] private PlayerHealth playerHealth;
-    [SerializeField] private Score score;
 
     private void OnEnable()
     {
         playerHealth.OnHealthChanged.AddListener(UpdateHealth);  
-        score.OnScoreUpdated.AddListener(UpdateScore);     
+        GameManager.Instance.OnScoreUpdated.AddListener(UpdateScore); 
+        GameManager.Instance.OnLevelChanged.AddListener(UpdateLevel);    
     }
 
     private void OnDisable()
     {
         playerHealth.OnHealthChanged.RemoveListener(UpdateHealth);  
-        score.OnScoreUpdated.RemoveListener(UpdateScore);    
+        GameManager.Instance.OnScoreUpdated.RemoveListener(UpdateScore);   
+        GameManager.Instance.OnLevelChanged.RemoveListener(UpdateLevel);  
+    }
+
+    public void UpdateLevel(int level) 
+    {
+        levelText.text = $"Level: {level}";
     }
 
     public void UpdateHealth(int health)
