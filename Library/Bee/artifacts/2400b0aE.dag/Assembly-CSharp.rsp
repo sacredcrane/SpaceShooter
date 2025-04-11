@@ -413,12 +413,12 @@
 "Assets/Scripts/Player/PlayerMovement.cs"
 "Assets/Scripts/Player/PlayerWeapon.cs"
 "Assets/Scripts/Player/Shield.cs"
+"Assets/Scripts/Shop.cs"
 "Assets/Scripts/Utlis/Projectile.cs"
 "Assets/Scripts/World/GameManager.cs"
 "Assets/Scripts/World/GameUI.cs"
 "Assets/Scripts/World/MainMenu.cs"
 "Assets/Scripts/World/SkyboxSelector.cs"
-"Assets/Shop.cs"
 -langversion:9.0
 /deterministic
 /optimize+

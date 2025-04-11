@@ -15,11 +15,14 @@ public class GameManager : MonoBehaviour
     public UnityEvent OnGameRestarted;
     public UnityEvent<int> OnScoreUpdated;
 
+    [Header("Skybox Materials")]
+    [SerializeField] private Material[] _skyboxMaterials;
+
     public int CurrentScore;
 
     
 
-    private int _currentLevel = 1;
+    private int _currentLevel = 0;
     private bool _isGamePaused;
     private bool _isDead;
 
@@ -30,11 +33,28 @@ public class GameManager : MonoBehaviour
 
     }
 
+    private void ChooseSkybox() 
+    {
+        if (_skyboxMaterials == null || _skyboxMaterials.Length == 0)
+        {
+            Debug.LogError("No skybox materials assigned!");
+            return;
+        }
+
+        int randomIndex = Random.Range(0, _skyboxMaterials.Length);
+        Material selectedMaterial = _skyboxMaterials[randomIndex];
+
+        RenderSettings.skybox = selectedMaterial;
+
+        DynamicGI.UpdateEnvironment();
+    }
+
     private void Awake()
     {
         if(Instance == null) Instance = this;
         else Destroy(gameObject);
         FindAnyObjectByType<PlayerHealth>().OnDeath.AddListener(LevelCompleted);
+        RestartLevel();
     }
 
     public void LevelCompleted(bool death)
@@ -50,6 +70,7 @@ public class GameManager : MonoBehaviour
         if (!_isDead) _currentLevel++;
         Time.timeScale = 1;
         _isGamePaused = false;
+        ChooseSkybox();
         OnLevelChanged?.Invoke(_currentLevel);
         OnGameRestarted?.Invoke();
     }
