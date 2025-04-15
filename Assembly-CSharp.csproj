@@ -70,10 +70,12 @@
     <Compile Include="Assets/Scripts/Enemy/EnemySpawner.cs" />
     <Compile Include="Assets/Scripts/Enemy/EnemyMovement.cs" />
     <Compile Include="Assets/Resources/VolumetricLines/BuiltInRenderPipeline/ExampleScenes/ExampleScripts/ShotBehavior.cs" />
+    <Compile Include="Assets/Scripts/EnemyBullet.cs" />
     <Compile Include="Assets/Resources/8K Skybox Pack Free/Example Scenes/Script/RotateCamera.cs" />
     <Compile Include="Assets/Scripts/World/GameManager.cs" />
     <Compile Include="Assets/Scripts/World/MainMenu.cs" />
     <Compile Include="Assets/Resources/Asteroids Pack/Assets/Scripts/RandomRotator.cs" />
+    <Compile Include="Assets/Scripts/SpaceshipEnemy.cs" />
     <Compile Include="Assets/Resources/VolumetricLines/BuiltInRenderPipeline/ExampleScenes/ExampleScripts/CannonBehavior.cs" />
     <Compile Include="Assets/Resources/VolumetricLines/Scripts/VolumetricLineBehavior.cs" />
     <Compile Include="Assets/Scripts/Shop.cs" />

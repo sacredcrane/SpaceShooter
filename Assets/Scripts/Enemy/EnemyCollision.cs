@@ -17,16 +17,20 @@ public class EnemyCollision : MonoBehaviour
         Debug.Log("Trigger Entered");
     
         var player = other.GetComponent<PlayerHealth>();
-        audioSource.Play();
+        var projectile = other.GetComponent<Projectile>();
+        if (audioSource != null) audioSource.Play();
+        
 
-        if(other.CompareTag("Projectile"))
+        if(projectile != null)
         {
+            Debug.Log("Got Projectile!");
             GameManager.Instance.AddScore();
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
-        else if(player != null)
+        if(player != null)
         {
+            Debug.Log("Got player");
             player.TakeDamage(playerDamage);
             Destroy(gameObject);
         }

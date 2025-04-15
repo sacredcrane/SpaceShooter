@@ -1901,7 +1901,7 @@ GameObject:
   - component: {fileID: 1361555677}
   m_Layer: 0
   m_Name: PlayerCraft
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2255,6 +2255,7 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 5061226112761861033, guid: 5f9c0896b2fbb1445a0c4aa4c69e2e6b, type: 3}
   - {fileID: 5852161006561067481, guid: 627c3be127c598d88935b6795b760872, type: 3}
+  - {fileID: 8451001702028016604, guid: 9b676bc4f52accd52be360b4ed1823b5, type: 3}
   spawnInterval: 5
   enemiesPerGroup: 3
   initialDelay: 2
