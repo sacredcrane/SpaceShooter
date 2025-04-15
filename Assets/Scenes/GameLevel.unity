@@ -551,6 +551,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 406375941}
   m_CullTransparentMesh: 1
+--- !u!1 &442593340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 442593341}
+  m_Layer: 0
+  m_Name: BossPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &442593341
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442593340}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 70, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &492342458
 GameObject:
   m_ObjectHideFlags: 0
@@ -1247,7 +1278,7 @@ MonoBehaviour:
   baseEnemies: 20
   enemiesPerLevel: 5
   bossPrefab: {fileID: 1021750190269787528, guid: eaea4f868871c3e17b5e6797c2d8604b, type: 3}
-  bossSpawnPoint: {fileID: 1401247960}
+  bossSpawnPoint: {fileID: 442593341}
   OnLevelChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2679,3 +2710,4 @@ SceneRoots:
   - {fileID: 571120395}
   - {fileID: 1176521087}
   - {fileID: 135604850}
+  - {fileID: 442593341}
