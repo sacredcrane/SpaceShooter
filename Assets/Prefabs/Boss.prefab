@@ -95,11 +95,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2595282b2b976a43aa69caf05153f43d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHits: 10
+  maxHits: 50
   shootingInterval: 2
   projectilePrefab: {fileID: 4815715651868257033, guid: 9a9f1e3b74807763f90ec0e184186a00, type: 3}
-  projectileSpeed: 10
+  projectileSpeed: 100
   projectileLifeTime: 5
+  invulnerabilityDuration: 3
   OnBossDefeated:
     m_PersistentCalls:
       m_Calls: []

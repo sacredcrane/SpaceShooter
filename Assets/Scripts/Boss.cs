@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,18 +14,31 @@ public class Boss : MonoBehaviour
     public float projectileSpeed = 10f;       // Скорость снаряда
     public float projectileLifeTime = 5f;     // Время жизни снаряда
 
-    private float shootingTimer = 0f;
+    [Header("Invulnerability Settings")]
+    [Tooltip("Время в секундах, в течение которого босс неуязвим после спауна")]
+    public float invulnerabilityDuration = 3f;
+    private float invulnerabilityTimer;
 
     // Событие, которое вызывается при уничтожении босса
     public UnityEvent OnBossDefeated;
 
+    private float shootingTimer = 0f;
+
     private void Start()
     {
         shootingTimer = shootingInterval;
+        invulnerabilityTimer = invulnerabilityDuration;
     }
 
     private void Update()
     {
+        // Обновление таймера неуязвимости
+        if(invulnerabilityTimer > 0f)
+        {
+            invulnerabilityTimer -= Time.deltaTime;
+            // Здесь можно добавить визуальные эффекты неуязвимости, например, мерцание
+        }
+
         shootingTimer -= Time.deltaTime;
         if (shootingTimer <= 0f)
         {
@@ -35,35 +49,35 @@ public class Boss : MonoBehaviour
 
     private void ShootInAllDirections()
     {
-        // Запускаем снаряды в 6 равномерно распределённых направлениях (каждые 60 градусов)
-        for (int i = 0; i < 6; i++)
+        // Выпускаем снаряды в 6 равномерно распределённых направлениях (каждые 60 градусов)
+        for (int i = 270 - 45; i <= 270 + 45 ; i += 15)
         {
-            float angle = i * 60f;
-            // Вычисляем вектор направления по окружности
+            float angle = (float) i;
             Vector3 direction = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad),
                                             Mathf.Sin(angle * Mathf.Deg2Rad),
                                             0f);
-            // Создаём снаряд в позиции босса
+
             GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-            // Применяем скорость к Rigidbody снаряда (убедитесь, что в префабе снаряда есть компонент Rigidbody)
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
             if (rb != null)
             {
                 rb.linearVelocity = direction * projectileSpeed;
             }
-            // Уничтожаем снаряд через заданное время, чтобы не засорять сцену
             Destroy(projectile, projectileLifeTime);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        // Если объект имеет скрипт Projectile, считаем это попаданием по боссу.
+        // Если ещё включена неуязвимость — игнорируем попадание
+        if (invulnerabilityTimer > 0f)
+            return;
+
+        // Если объект имеет скрипт Projectile, считаем это попаданием по боссу
         if (other.GetComponent<Projectile>() != null)
         {
             currentHits++;
-            // Уничтожаем пулю (если требуется, можно добавить эффект попадания)
-            Destroy(other.gameObject);
+            Destroy(other.gameObject); // Уничтожаем пулю игрока
 
             if (currentHits >= maxHits)
             {
