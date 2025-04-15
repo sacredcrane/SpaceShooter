@@ -8,6 +8,10 @@ public class GameManager : MonoBehaviour
     [Header("Level Settings")]
     [SerializeField] private int baseEnemies = 20;
     [SerializeField] private int enemiesPerLevel = 5;
+
+    [Header("Boss Settings")]
+    [SerializeField] private GameObject bossPrefab;      // Префаб босса
+    [SerializeField] private Transform bossSpawnPoint;   // Точка появления босса
     
     [Header("Events")]
     public UnityEvent<int> OnLevelChanged;
@@ -60,6 +64,27 @@ public class GameManager : MonoBehaviour
     public void LevelCompleted(bool death)
     {
         _isDead = death;
+        if (!death)
+        {
+            // Уровень пройден успешно – запускаем босса вместо моментального завершения уровня.
+            GameObject boss = Instantiate(bossPrefab, bossSpawnPoint.position, Quaternion.identity);
+            Boss bossScript = boss.GetComponent<Boss>();
+            if (bossScript != null)
+            {
+                bossScript.OnBossDefeated.AddListener(HandleBossDefeated);
+            }
+        }
+        else
+        {
+            Time.timeScale = 0;
+            _isGamePaused = true;
+            OnShopOpened?.Invoke();
+        }
+    }
+
+    private void HandleBossDefeated()
+    {
+        // После уничтожения босса завершаем уровень.
         Time.timeScale = 0;
         _isGamePaused = true;
         OnShopOpened?.Invoke();

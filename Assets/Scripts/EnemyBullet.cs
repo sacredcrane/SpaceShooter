@@ -15,7 +15,7 @@ public class EnemyBullet : MonoBehaviour
     private void Update()
     {
         // Двигаем пулю вперед относительно ее локальной оси
-        transform.Translate(Vector3.down * bulletSpeed * Time.deltaTime, Space.Self);
+        transform.Translate(Vector3.up * bulletSpeed * Time.deltaTime, Space.Self);
     }
 
     private void OnTriggerEnter(Collider other)

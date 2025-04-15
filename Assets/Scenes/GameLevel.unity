@@ -1246,6 +1246,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseEnemies: 20
   enemiesPerLevel: 5
+  bossPrefab: {fileID: 1021750190269787528, guid: eaea4f868871c3e17b5e6797c2d8604b, type: 3}
+  bossSpawnPoint: {fileID: 1401247960}
   OnLevelChanged:
     m_PersistentCalls:
       m_Calls: []

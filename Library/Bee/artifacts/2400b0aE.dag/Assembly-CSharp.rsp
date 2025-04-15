@@ -406,6 +406,7 @@
 "Assets/Resources/VolumetricLines/Scripts/VolumetricLineBehavior.cs"
 "Assets/Resources/VolumetricLines/Scripts/VolumetricLineStripBehavior.cs"
 "Assets/Resources/VolumetricLines/Scripts/VolumetricLineVertexData.cs"
+"Assets/Scripts/Boss.cs"
 "Assets/Scripts/Enemy/EnemyCollision.cs"
 "Assets/Scripts/Enemy/EnemyMovement.cs"
 "Assets/Scripts/Enemy/EnemySpawner.cs"
